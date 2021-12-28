@@ -13,7 +13,7 @@ const Card = () => {
         style={{width: '100%', height: 140}}
       />
       <View style={style.CardDetail}>
-        <MaterialIcons name="account-circle" size={32} color="#212121" />
+        <MaterialIcons name="account-circle" size={40} color="#212121" />
         <View style={style.CardTexts}>
           <Text style={style.CardTitle} ellipsizeMode="tail" numberOfLines={2}>
             This is Amazing courserag iddervwrvwrv igh prigj sdf
@@ -26,7 +26,7 @@ const Card = () => {
 };
 
 const style = StyleSheet.create({
-  Card: {},
+  Card: {marginBottom: 10},
   CardDetail: {
     flexDirection: 'row',
     margin: 5,
