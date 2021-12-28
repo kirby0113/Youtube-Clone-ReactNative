@@ -7,7 +7,7 @@ import Card from '../components/Card';
 
 const Home = () => {
   return (
-    <View>
+    <View style={style.HomeScreen}>
       <Header />
       <ScrollView>
         <Card />
@@ -20,5 +20,7 @@ const Home = () => {
     </View>
   );
 };
+
+const style = StyleSheet.create({HomeScreen: {flex: 1}});
 
 export default Home;
