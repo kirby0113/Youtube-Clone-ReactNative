@@ -6,7 +6,7 @@ const MiniCard = props => {
     <View style={style.MiniCard}>
       <Image
         source={{
-          uri: `https://i.ytimg.com/vi/${props.videoId}/default.jpg`,
+          uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
         }}
         style={{width: '45%', height: 100}}
       />
