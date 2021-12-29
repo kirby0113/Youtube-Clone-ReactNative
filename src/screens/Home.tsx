@@ -7,7 +7,7 @@ import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import Header from '../components/Header';
 import Card from '../components/Card';
 
-const Home = () => {
+const Home = navigation => {
   return (
     <View style={style.HomeScreen}>
       <Header />
