@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 
-const MiniCard = () => {
+const MiniCard = props => {
   return (
     <View style={style.MiniCard}>
       <Image
         source={{
-          url: 'https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+          uri: `https://i.ytimg.com/vi/${props.videoId}/default.jpg`,
         }}
         style={{width: '45%', height: 100}}
       />
@@ -15,9 +15,9 @@ const MiniCard = () => {
           style={style.MiniCardTitle}
           ellipsizeMode="tail"
           numberOfLines={3}>
-          This is amazing course. wgin rgpiwnrg
+          {props.title}
         </Text>
-        <Text style={{fontSize: 17}}>texttext</Text>
+        <Text style={{fontSize: 17}}>{props.channelTitle}</Text>
       </View>
     </View>
   );
