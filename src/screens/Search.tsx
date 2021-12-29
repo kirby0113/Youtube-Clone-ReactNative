@@ -13,10 +13,14 @@ import {
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 
 import MiniCard from '../components/MiniCard';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Search = props => {
   const [value, setValue] = useState('');
-  const [miniCardDatas, setMiniCardDatas] = useState([]);
+  const dispatch = useDispatch();
+  const miniCardDatas = useSelector(state => {
+    return state;
+  });
   const [loading, setLoading] = useState(false);
   const fetchData = () => {
     setLoading(true);
@@ -26,7 +30,7 @@ const Search = props => {
       .then(response => response.json())
       .then(json => {
         setLoading(false);
-        setMiniCardDatas(json.items);
+        dispatch({type: 'add', payload: json.items});
       });
   };
   return (
