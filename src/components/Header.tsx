@@ -1,11 +1,13 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {default as AntDesign} from 'react-native-vector-icons/AntDesign';
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 
 const Header = () => {
+  const navigation = useNavigation();
   const mycolor = '#212121';
   return (
     <View style={styled.Header}>
@@ -28,7 +30,12 @@ const Header = () => {
       </View>
       <View style={styled.HeaderIcons}>
         <Ionicons name="md-videocam" size={32} color={mycolor} />
-        <Ionicons name="md-search" size={32} color={mycolor} />
+        <Ionicons
+          name="md-search"
+          size={32}
+          color={mycolor}
+          onPress={() => navigation.navigate('search')}
+        />
         <MaterialIcons name="account-circle" size={32} color={mycolor} />
       </View>
     </View>

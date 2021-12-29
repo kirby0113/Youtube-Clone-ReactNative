@@ -14,7 +14,7 @@ import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 
 import MiniCard from '../components/MiniCard';
 
-const Search = () => {
+const Search = props => {
   const [value, setValue] = useState('');
   const [miniCardDatas, setMiniCardDatas] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,11 @@ const Search = () => {
   return (
     <View style={style.SearchScreen}>
       <View style={style.SearchForm}>
-        <Ionicons name="md-arrow-back" size={32} />
+        <Ionicons
+          name="md-arrow-back"
+          size={32}
+          onPress={() => props.navigation.goBack()}
+        />
         <TextInput
           onChangeText={(text: string) => setValue(text)}
           value={value}
