@@ -9,6 +9,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
+import {useTheme} from '@react-navigation/native';
 
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 
@@ -16,6 +17,8 @@ import MiniCard from '../components/MiniCard';
 import {useSelector, useDispatch} from 'react-redux';
 
 const Search = props => {
+  const {colors} = useTheme();
+  const iconColor = colors.iconColor;
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const miniCardDatas = useSelector(state => {
@@ -33,10 +36,31 @@ const Search = props => {
         dispatch({type: 'add', payload: json.items});
       });
   };
+
+  const style = StyleSheet.create({
+    SearchScreen: {flex: 1, marginTop: 40},
+    SearchForm: {
+      padding: 5,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      evelation: 5,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+      backgroundColor: colors.headerColor,
+    },
+    SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
+  });
+
   return (
     <View style={style.SearchScreen}>
       <View style={style.SearchForm}>
         <Ionicons
+          style={{color:iconColor}}
           name="md-arrow-back"
           size={32}
           onPress={() => props.navigation.goBack()}
@@ -46,7 +70,12 @@ const Search = props => {
           value={value}
           style={style.SearchInput}
         />
-        <Ionicons name="md-send" size={32} onPress={() => fetchData()} />
+        <Ionicons
+          style={{color:iconColor}}
+          name="md-send"
+          size={32}
+          onPress={() => fetchData()}
+        />
       </View>
       {loading ? (
         <ActivityIndicator style={{marginTop: 20}} size="large" color="red" />
@@ -67,24 +96,5 @@ const Search = props => {
     </View>
   );
 };
-
-const style = StyleSheet.create({
-  SearchScreen: {flex: 1, marginTop: 40},
-  SearchForm: {
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    evelation: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    backgroundColor: 'white',
-  },
-  SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
-});
 
 export default Search;

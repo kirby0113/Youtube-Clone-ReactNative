@@ -7,12 +7,30 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 
 const Card = props => {
   const navigation = useNavigation();
+  const {colors} = useTheme();
+  const textcolor = colors.iconColor;
+
+  const style = StyleSheet.create({
+    Card: {marginBottom: 10},
+    CardDetail: {
+      flexDirection: 'row',
+      margin: 5,
+    },
+    CardTexts: {marginLeft: 10},
+    CardTitle: {
+      fontSize: 20,
+      width: Dimensions.get('screen').width - 50,
+      color: textcolor,
+    },
+    ChannelTitle: {color: textcolor},
+  });
+
   return (
     <TouchableOpacity
       onPress={() =>
@@ -37,22 +55,12 @@ const Card = props => {
               numberOfLines={2}>
               {props.title}
             </Text>
-            <Text>{props.channelTitle}</Text>
+            <Text style={style.ChannelTitle}>{props.channelTitle}</Text>
           </View>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
-
-const style = StyleSheet.create({
-  Card: {marginBottom: 10},
-  CardDetail: {
-    flexDirection: 'row',
-    margin: 5,
-  },
-  CardTexts: {marginLeft: 10},
-  CardTitle: {fontSize: 20, width: Dimensions.get('screen').width - 50},
-});
 
 export default Card;

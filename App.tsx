@@ -1,7 +1,12 @@
 import React from 'react';
 
 import {View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+  useTheme,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
@@ -16,12 +21,33 @@ import {reducer} from './src/reducers/reducer';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
+const customDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    headerColor: '#404040',
+    iconColor: 'white',
+    tabIcon: 'white',
+  },
+};
+
+const customDefaultTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    headerColor: 'white',
+    iconColor: 'black',
+    tabIcon: 'red',
+  },
+};
+
 const store = createStore(reducer);
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
 const RootHome = () => {
+  const {colors} = useTheme();
   return (
     <Tabs.Navigator
       screenOptions={({route}) => ({
@@ -39,7 +65,7 @@ const RootHome = () => {
           // You can return any component that you like here!
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'red',
+        tabBarActiveTintColor: colors.tabIcon,
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}>
@@ -53,7 +79,7 @@ const RootHome = () => {
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer theme={customDarkTheme}>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
