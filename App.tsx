@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {View} from 'react-native';
 import {
@@ -10,6 +10,7 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
+import SplashScreen from 'react-native-splash-screen';
 
 import Home from './src/screens/Home';
 import Search from './src/screens/Search';
@@ -102,6 +103,9 @@ const Navigation = () => {
 };
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Provider store={store}>
       <Navigation />
