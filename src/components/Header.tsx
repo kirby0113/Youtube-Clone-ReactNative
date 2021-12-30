@@ -5,10 +5,14 @@ import {useNavigation, useTheme} from '@react-navigation/native';
 import {default as AntDesign} from 'react-native-vector-icons/AntDesign';
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Header = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const currentTheme = useSelector(state => {
+    return state.myDarkMode;
+  });
   const {colors} = useTheme();
   const mycolor = colors.iconColor;
   const styled = StyleSheet.create({
@@ -68,7 +72,14 @@ const Header = () => {
           color={mycolor}
           onPress={() => navigation.navigate('search')}
         />
-        <MaterialIcons name="account-circle" size={32} color={mycolor} />
+        <MaterialIcons
+          name="account-circle"
+          size={32}
+          color={mycolor}
+          onPress={() =>
+            dispatch({type: 'change_theme', payload: !currentTheme})
+          }
+        />
       </View>
     </View>
   );

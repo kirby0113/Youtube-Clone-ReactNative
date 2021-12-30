@@ -22,7 +22,7 @@ const Search = props => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const miniCardDatas = useSelector(state => {
-    return state;
+    return state.cardData;
   });
   const [loading, setLoading] = useState(false);
   const fetchData = () => {
@@ -60,7 +60,7 @@ const Search = props => {
     <View style={style.SearchScreen}>
       <View style={style.SearchForm}>
         <Ionicons
-          style={{color:iconColor}}
+          style={{color: iconColor}}
           name="md-arrow-back"
           size={32}
           onPress={() => props.navigation.goBack()}
@@ -71,7 +71,7 @@ const Search = props => {
           style={style.SearchInput}
         />
         <Ionicons
-          style={{color:iconColor}}
+          style={{color: iconColor}}
           name="md-send"
           size={32}
           onPress={() => fetchData()}
