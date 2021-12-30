@@ -8,10 +8,28 @@ import {
   TouchableOpacity,
   Touchable,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 const MiniCard = props => {
   const navigation = useNavigation();
+  const {colors} = useTheme();
+  const textcolor = colors.iconColor;
+
+  const style = StyleSheet.create({
+    MiniCard: {margin: 10, marginBottom: 0, flexDirection: 'row'},
+    CardDetail: {
+      flexDirection: 'row',
+      margin: 5,
+    },
+    MiniCardTexts: {paddingLeft: 7},
+    ChannelTitle: {color: textcolor, fontSize: 17},
+    MiniCardTitle: {
+      fontSize: 20,
+      width: Dimensions.get('screen').width / 2,
+      color: textcolor,
+    },
+  });
+
   return (
     <TouchableOpacity
       onPress={() =>
@@ -34,21 +52,11 @@ const MiniCard = props => {
             numberOfLines={3}>
             {props.title}
           </Text>
-          <Text style={{fontSize: 17}}>{props.channelTitle}</Text>
+          <Text style={style.ChannelTitle}>{props.channelTitle}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
-
-const style = StyleSheet.create({
-  MiniCard: {margin: 10, marginBottom: 0, flexDirection: 'row'},
-  CardDetail: {
-    flexDirection: 'row',
-    margin: 5,
-  },
-  MiniCardTexts: {paddingLeft: 7},
-  MiniCardTitle: {fontSize: 20, width: Dimensions.get('screen').width / 2},
-});
 
 export default MiniCard;
