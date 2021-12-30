@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, Text, FlatList, ScrollView} from 'react-native';
+import {View, Text, FlatList, ScrollView, VirtualizedList} from 'react-native';
 import Header from '../components/Header';
 import Card from '../components/Card';
 
@@ -28,6 +28,23 @@ const LittleCard = ({name}) => {
     </View>
   );
 };
+
+type VirtualizedViewProps = {
+  children: React.ReactNode;
+};
+
+const VirtualizedView = ({children}: VirtualizedViewProps) => {
+  return (
+    <FlatList
+      data={[]}
+      ListEmptyComponent={null}
+      keyExtractor={() => 'dummy'}
+      renderItem={null}
+      ListHeaderComponent={() => <React.Fragment>{children}</React.Fragment>}
+    />
+  );
+};
+
 const Explore = () => {
   const cardData = useSelector(state => {
     return state;
@@ -35,7 +52,7 @@ const Explore = () => {
   return (
     <View style={{flex: 1}}>
       <Header />
-      <ScrollView nestedScrollEnabled={true}>
+      <VirtualizedView>
         <View
           style={{
             flexDirection: 'row',
@@ -65,7 +82,7 @@ const Explore = () => {
           }}
           keyExtractor={item => item.id.videoId}
         />
-      </ScrollView>
+      </VirtualizedView>
     </View>
   );
 };
