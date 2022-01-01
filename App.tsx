@@ -28,8 +28,7 @@ const customDarkTheme = {
   colors: {
     ...DarkTheme.colors,
     headerColor: '#404040',
-    iconColor: 'white',
-    tabIcon: 'white',
+    text: 'white',
   },
 };
 
@@ -38,8 +37,7 @@ const customDefaultTheme = {
   colors: {
     ...DefaultTheme.colors,
     headerColor: 'white',
-    iconColor: 'black',
-    tabIcon: 'red',
+    text: 'red',
   },
 };
 
@@ -53,13 +51,17 @@ const store = createStore(rootReducer);
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
+type RootState = {
+  myDarkMode: boolean;
+};
+
 const RootHome = () => {
   const {colors} = useTheme();
   return (
     <Tabs.Navigator
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
-          let iconName;
+          let iconName: string = '';
 
           if (route.name === 'home') {
             iconName = 'home';
@@ -72,7 +74,7 @@ const RootHome = () => {
           // You can return any component that you like here!
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: colors.tabIcon,
+        tabBarActiveTintColor: colors.text,
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}>
@@ -84,7 +86,7 @@ const RootHome = () => {
 };
 
 const Navigation = () => {
-  let currentTheme = useSelector(state => {
+  let currentTheme = useSelector((state: RootState) => {
     return state.myDarkMode;
   });
   return (
