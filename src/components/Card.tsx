@@ -8,13 +8,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation, useTheme} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 
-const Card = props => {
-  const navigation = useNavigation();
+import {CardProps} from '../types/Cards';
+
+type NavigatorRoutes = {
+  videoPlayer: VideoPlayer;
+};
+
+type VideoPlayer = {
+  videoId: string;
+  title: string;
+};
+
+const Card = ({props}: CardProps) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
-  const textcolor = colors.iconColor;
+  const textColor = colors.text;
 
   const style = StyleSheet.create({
     Card: {marginBottom: 10},
@@ -26,15 +39,15 @@ const Card = props => {
     CardTitle: {
       fontSize: 20,
       width: Dimensions.get('screen').width - 50,
-      color: textcolor,
+      color: textColor,
     },
-    ChannelTitle: {color: textcolor},
+    ChannelTitle: {color: textColor},
   });
 
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('videoplayer', {
+        navigation.navigate('videoPlayer', {
           videoId: props.videoId,
           title: props.title,
         })
