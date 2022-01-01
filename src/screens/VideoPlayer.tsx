@@ -2,8 +2,9 @@ import React from 'react';
 
 import {View, Text, Dimensions, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
+import {NavigatorRoutes, VideoPlayerProps} from '../types/Navigation';
 
-const VideoPlayer = ({route}) => {
+const VideoPlayer = ({route}: VideoPlayerProps) => {
   const {videoId, title} = route.params;
   return (
     <View style={style.VideoPlayer}>
