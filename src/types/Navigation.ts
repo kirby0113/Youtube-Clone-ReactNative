@@ -1,6 +1,11 @@
 export type NavigatorRoutes = {
   //useNavigation周りの型
-  videoPlayer: VideoPlayerProps;
+  videoPlayer?: {
+    videoId: string;
+    title: string;
+    channel: string;
+  };
+  search?: SearchProps;
 };
 
 export type VideoPlayerProps = {
@@ -8,6 +13,9 @@ export type VideoPlayerProps = {
     params: {
       videoId: string;
       title: string;
+      channel: string;
     };
   };
 };
+
+export type SearchProps = {};
