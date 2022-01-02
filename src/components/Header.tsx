@@ -6,20 +6,26 @@ import {default as AntDesign} from 'react-native-vector-icons/AntDesign';
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+import {NavigatorRoutes} from '../types/Navigation';
+
+import {ThemeState} from '../types/State';
 
 const Header = () => {
-  const navigation = useNavigation();
+  const searchNavigation =
+    useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'search'>>();
   const dispatch = useDispatch();
-  const currentTheme = useSelector(state => {
+  const currentTheme = useSelector((state: ThemeState) => {
     return state.myDarkMode;
   });
   const {colors} = useTheme();
-  const mycolor = colors.iconColor;
+  const mycolor = colors.text;
   const styled = StyleSheet.create({
     Header: {
       marginTop: 40,
       height: 45,
-      backgroundColor: colors.headerColor,
+      backgroundColor: colors.background,
       flexDirection: 'row',
       justifyContent: 'space-between',
       shadowColor: '#000',
@@ -70,7 +76,7 @@ const Header = () => {
           name="md-search"
           size={32}
           color={mycolor}
-          onPress={() => navigation.navigate('search')}
+          onPress={() => searchNavigation.navigate('search', {})}
         />
         <MaterialIcons
           name="account-circle"

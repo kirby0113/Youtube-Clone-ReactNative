@@ -23,11 +23,14 @@ import {themeReducer} from './src/reducers/themeReducer';
 import {Provider, useSelector} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
+import {ThemeState} from './src/types/State';
+
 const customDarkTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    headerColor: '#404040',
+    background: '#404040',
+    primary: 'white',
     text: 'white',
   },
 };
@@ -36,8 +39,9 @@ const customDefaultTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    headerColor: 'white',
-    text: 'red',
+    background: 'white',
+    primary: 'red',
+    text: 'black',
   },
 };
 
@@ -50,10 +54,6 @@ const store = createStore(rootReducer);
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
-
-type RootState = {
-  myDarkMode: boolean;
-};
 
 const RootHome = () => {
   const {colors} = useTheme();
@@ -86,7 +86,7 @@ const RootHome = () => {
 };
 
 const Navigation = () => {
-  let currentTheme = useSelector((state: RootState) => {
+  let currentTheme = useSelector((state: ThemeState) => {
     return state.myDarkMode;
   });
   return (
@@ -98,7 +98,7 @@ const Navigation = () => {
         }}>
         <Stack.Screen name="rootHome" component={RootHome} />
         <Stack.Screen name="search" component={Search} />
-        <Stack.Screen name="videoplayer" component={VideoPlayer} />
+        <Stack.Screen name="videoPlayer" component={VideoPlayer} />
       </Stack.Navigator>
     </NavigationContainer>
   );

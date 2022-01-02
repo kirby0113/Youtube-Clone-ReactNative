@@ -13,18 +13,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 
 import {CardProps} from '../types/Cards';
+import {NavigatorRoutes} from '../types/Navigation';
 
-type NavigatorRoutes = {
-  videoPlayer: VideoPlayer;
-};
-
-type VideoPlayer = {
-  videoId: string;
-  title: string;
-};
-
-const Card = ({props}: CardProps) => {
-  const navigation =
+const Card = (props: CardProps) => {
+  const videoPlayerNavigation =
     useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
   const textColor = colors.text;
@@ -47,9 +39,10 @@ const Card = ({props}: CardProps) => {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('videoPlayer', {
+        videoPlayerNavigation.navigate('videoPlayer', {
           videoId: props.videoId,
           title: props.title,
+          channel: props.channelTitle,
         })
       }>
       <View style={style.Card}>
