@@ -3,5 +3,5 @@ export type ThemeState = {
 };
 
 export type CardState = {
-  cardData: Object;
+  cardData: undefined; //ここは後々型を定義したい
 };

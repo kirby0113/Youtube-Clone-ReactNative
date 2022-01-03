@@ -1,3 +1,5 @@
+import {NavigationProp} from '@react-navigation/native';
+
 export type NavigatorRoutes = {
   //useNavigation周りの型
   videoPlayer?: {
@@ -18,4 +20,6 @@ export type VideoPlayerProps = {
   };
 };
 
-export type SearchProps = {};
+export type SearchProps = {
+  navigation: NavigationProp<any, any>; //any以外の方法を探したい
+};

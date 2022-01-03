@@ -76,7 +76,7 @@ const Header = () => {
           name="md-search"
           size={32}
           color={mycolor}
-          onPress={() => searchNavigation.navigate('search', {})}
+          onPress={() => searchNavigation.navigate('search')}
         />
         <MaterialIcons
           name="account-circle"

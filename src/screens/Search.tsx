@@ -10,18 +10,20 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {CardState} from '../types/State';
 
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 
 import MiniCard from '../components/MiniCard';
 import {useSelector, useDispatch} from 'react-redux';
+import {SearchProps} from '../types/Navigation';
 
-const Search = props => {
+const Search = (props: SearchProps) => {
   const {colors} = useTheme();
-  const iconColor = colors.iconColor;
+  const iconColor = colors.text;
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-  const miniCardDatas = useSelector(state => {
+  const miniCardDatas = useSelector((state: CardState) => {
     return state.cardData;
   });
   const [loading, setLoading] = useState(false);
@@ -51,7 +53,7 @@ const Search = props => {
       },
       shadowOpacity: 0.2,
       shadowRadius: 2,
-      backgroundColor: colors.headerColor,
+      backgroundColor: colors.background,
     },
     SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
   });

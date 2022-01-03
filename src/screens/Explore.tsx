@@ -6,7 +6,10 @@ import Card from '../components/Card';
 
 import {useSelector} from 'react-redux';
 
-const LittleCard = ({name}) => {
+import {LittleCardProps} from '../types/Cards';
+import {CardState} from '../types/State';
+
+const LittleCard = ({name}: LittleCardProps) => {
   return (
     <View
       style={{
@@ -46,7 +49,7 @@ const VirtualizedView = ({children}: VirtualizedViewProps) => {
 };
 
 const Explore = () => {
-  const cardData = useSelector(state => {
+  const cardData = useSelector((state: CardState) => {
     return state.cardData;
   });
   return (

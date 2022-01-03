@@ -10,10 +10,16 @@ import {
 } from 'react-native';
 import {useNavigation, useTheme} from '@react-navigation/native';
 
-const MiniCard = props => {
-  const navigation = useNavigation();
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {NavigatorRoutes} from '../types/Navigation';
+
+import {MiniCardProps} from '../types/Cards';
+
+const MiniCard = (props: MiniCardProps) => {
+  const videoPlayerNavigation =
+    useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
-  const textcolor = colors.iconColor;
+  const textcolor = colors.text;
 
   const style = StyleSheet.create({
     MiniCard: {margin: 10, marginBottom: 0, flexDirection: 'row'},
@@ -33,9 +39,10 @@ const MiniCard = props => {
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('videoplayer', {
+        videoPlayerNavigation.navigate('videoPlayer', {
           videoId: props.videoId,
           title: props.title,
+          channel: props.channelTitle,
         })
       }>
       <View style={style.MiniCard}>
