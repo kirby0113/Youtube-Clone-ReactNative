@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Header from '../components/Header';
 
-const Suscribe = () => {
+const Subscribe = () => {
   const style = StyleSheet.create({
     Subscribe: {
       flex: 1,
@@ -12,9 +12,9 @@ const Suscribe = () => {
   return (
     <View style={style.Subscribe}>
       <Header />
-      <Text>Suscribe</Text>
+      <Text>Subscribe</Text>
     </View>
   );
 };
 
-export default Suscribe;
+export default Subscribe;

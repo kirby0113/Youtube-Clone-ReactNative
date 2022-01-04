@@ -15,7 +15,7 @@ import SplashScreen from 'react-native-splash-screen';
 import Home from './src/screens/Home';
 import Search from './src/screens/Search';
 import VideoPlayer from './src/screens/VideoPlayer';
-import Suscribe from './src/screens/Suscribe';
+import Subscribe from './src/screens/Subscribe';
 import Explore from './src/screens/Explore';
 import {reducer} from './src/reducers/reducer';
 import {themeReducer} from './src/reducers/themeReducer';
@@ -68,7 +68,7 @@ const RootHome = () => {
             iconName = 'home';
           } else if (route.name === 'explore') {
             iconName = 'explore';
-          } else if (route.name === 'suscribe') {
+          } else if (route.name === 'Subscribe') {
             iconName = 'subscriptions';
           }
 
@@ -81,7 +81,7 @@ const RootHome = () => {
       })}>
       <Tabs.Screen name="home" component={Home} />
       <Tabs.Screen name="explore" component={Explore} />
-      <Tabs.Screen name="suscribe" component={Suscribe} />
+      <Tabs.Screen name="Subscribe" component={Subscribe} />
     </Tabs.Navigator>
   );
 };
