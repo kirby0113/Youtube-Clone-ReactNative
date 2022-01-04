@@ -49,6 +49,15 @@ const Header = () => {
       justifyContent: 'space-around',
       width: 150,
     },
+    HeaderLogoIcon: {
+      marginLeft: 15,
+    },
+    HeaderLogoText: {
+      fontSize: 22,
+      marginLeft: 7,
+      fontWeight: 'bold',
+      color: mycolor,
+    },
   });
 
   return (
@@ -58,17 +67,9 @@ const Header = () => {
           name="youtube"
           size={32}
           color="red"
-          style={{marginLeft: 15}}
+          style={styled.HeaderLogoIcon}
         />
-        <Text
-          style={{
-            fontSize: 22,
-            marginLeft: 7,
-            fontWeight: 'bold',
-            color: mycolor,
-          }}>
-          YouTube
-        </Text>
+        <Text style={styled.HeaderLogoText}>YouTube</Text>
       </View>
       <View style={styled.HeaderIcons}>
         <Ionicons name="md-videocam" size={32} color={mycolor} />

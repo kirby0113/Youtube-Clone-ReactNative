@@ -55,6 +55,7 @@ const Search = (props: SearchProps) => {
       shadowRadius: 2,
       backgroundColor: colors.background,
     },
+    LoadingIndicator: {marginTop: 20},
     SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
   });
 
@@ -80,7 +81,11 @@ const Search = (props: SearchProps) => {
         />
       </View>
       {loading ? (
-        <ActivityIndicator style={{marginTop: 20}} size="large" color="red" />
+        <ActivityIndicator
+          style={style.LoadingIndicator}
+          size="large"
+          color="red"
+        />
       ) : null}
       <FlatList
         data={miniCardDatas}

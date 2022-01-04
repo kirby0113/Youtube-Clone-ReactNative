@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, Text, FlatList, ScrollView, VirtualizedList} from 'react-native';
+import {View, Text, FlatList, StyleSheet} from 'react-native';
 import Header from '../components/Header';
 import Card from '../components/Card';
 
@@ -10,24 +10,25 @@ import {LittleCardProps} from '../types/Cards';
 import {CardState} from '../types/State';
 
 const LittleCard = ({name}: LittleCardProps) => {
+  const style = StyleSheet.create({
+    LittleCard: {
+      backgroundColor: 'red',
+      height: 50,
+      width: 180,
+      borderRadius: 4,
+      marginTop: 10,
+    },
+    LittleCardText: {
+      textAlign: 'center',
+      color: 'white',
+      fontSize: 22,
+      marginTop: 5,
+    },
+  });
+
   return (
-    <View
-      style={{
-        backgroundColor: 'red',
-        height: 50,
-        width: 180,
-        borderRadius: 4,
-        marginTop: 10,
-      }}>
-      <Text
-        style={{
-          textAlign: 'center',
-          color: 'white',
-          fontSize: 22,
-          marginTop: 5,
-        }}>
-        {name}
-      </Text>
+    <View style={style.LittleCard}>
+      <Text style={style.LittleCardText}>{name}</Text>
     </View>
   );
 };
@@ -52,16 +53,20 @@ const Explore = () => {
   const cardData = useSelector((state: CardState) => {
     return state.cardData;
   });
+  const style = StyleSheet.create({
+    Explore: {flex: 1},
+    LittleCardFlex: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+    },
+    CenterText: {margin: 8, fontSize: 22, borderBottomWidth: 1},
+  });
   return (
-    <View style={{flex: 1}}>
+    <View style={style.Explore}>
       <Header />
       <VirtualizedView>
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-          }}>
+        <View style={style.LittleCardFlex}>
           <LittleCard name="Gaming" />
           <LittleCard name="Trending" />
           <LittleCard name="Music" />
@@ -69,9 +74,7 @@ const Explore = () => {
           <LittleCard name="Movies" />
           <LittleCard name="Fashion" />
         </View>
-        <Text style={{margin: 8, fontSize: 22, borderBottomWidth: 1}}>
-          Trending Videos
-        </Text>
+        <Text style={style.CenterText}>Trending Videos</Text>
         <FlatList
           data={cardData}
           renderItem={({item}) => {

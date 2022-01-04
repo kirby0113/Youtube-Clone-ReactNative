@@ -34,6 +34,10 @@ const MiniCard = (props: MiniCardProps) => {
       width: Dimensions.get('screen').width / 2,
       color: textcolor,
     },
+    MiniCardImage: {
+      width: '45%',
+      height: 100,
+    },
   });
 
   return (
@@ -50,7 +54,7 @@ const MiniCard = (props: MiniCardProps) => {
           source={{
             uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
           }}
-          style={{width: '45%', height: 100}}
+          style={style.MiniCardImage}
         />
         <View style={style.MiniCardTexts}>
           <Text

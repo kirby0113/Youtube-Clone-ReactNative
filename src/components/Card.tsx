@@ -34,6 +34,10 @@ const Card = (props: CardProps) => {
       color: textColor,
     },
     ChannelTitle: {color: textColor},
+    CardImage: {
+      width: '100%',
+      height: 200,
+    },
   });
 
   return (
@@ -50,7 +54,7 @@ const Card = (props: CardProps) => {
           source={{
             uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
           }}
-          style={{width: '100%', height: 200}}
+          style={style.CardImage}
         />
         <View style={style.CardDetail}>
           <MaterialIcons name="account-circle" size={40} color="#212121" />
