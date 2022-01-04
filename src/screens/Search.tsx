@@ -35,7 +35,7 @@ const Search = (props: SearchProps) => {
       .then(response => response.json())
       .then(json => {
         setLoading(false);
-        dispatch({type: 'add', payload: json.items});
+        dispatch({type: 'Add', payload: json.items});
       });
   };
 
