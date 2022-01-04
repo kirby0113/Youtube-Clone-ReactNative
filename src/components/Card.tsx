@@ -58,11 +58,7 @@ const Card = (props: CardProps) => {
           style={style.CardImage}
         />
         <View style={style.CardDetail}>
-          <MaterialIcons
-            name="account-circle"
-            size={40}
-            color={Colors.darkGrey}
-          />
+          <MaterialIcons name="account-circle" size={40} color={colors.text} />
           <View style={style.CardTexts}>
             <Text
               style={style.CardTitle}

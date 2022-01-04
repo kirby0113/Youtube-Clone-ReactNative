@@ -69,10 +69,9 @@ const Header = () => {
           color={Colors.primary}
           style={styled.HeaderLogoIcon}
         />
-        <Text style={styled.HeaderLogoText}>YouTube</Text>
+        <Text style={styled.HeaderLogoText}>SleepTube</Text>
       </View>
       <View style={styled.HeaderIcons}>
-        <Ionicons name="md-videocam" size={32} color={colors.text} />
         <Ionicons
           name="md-search"
           size={32}
