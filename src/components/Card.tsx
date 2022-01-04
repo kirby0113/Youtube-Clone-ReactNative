@@ -8,13 +8,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation, useTheme} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons';
 
-const Card = props => {
-  const navigation = useNavigation();
+import {CardProps} from '../types/Cards';
+import {NavigatorRoutes} from '../types/Navigation';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+const Card = (props: CardProps) => {
+  const videoPlayerNavigation =
+    useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
-  const textcolor = colors.iconColor;
+  const textColor = colors.text;
 
   const style = StyleSheet.create({
     Card: {marginBottom: 10},
@@ -26,17 +32,22 @@ const Card = props => {
     CardTitle: {
       fontSize: 20,
       width: Dimensions.get('screen').width - 50,
-      color: textcolor,
+      color: textColor,
     },
-    ChannelTitle: {color: textcolor},
+    ChannelTitle: {color: textColor},
+    CardImage: {
+      width: '100%',
+      height: 200,
+    },
   });
 
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('videoplayer', {
+        videoPlayerNavigation.navigate('videoPlayer', {
           videoId: props.videoId,
           title: props.title,
+          channel: props.channelTitle,
         })
       }>
       <View style={style.Card}>
@@ -44,10 +55,10 @@ const Card = props => {
           source={{
             uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
           }}
-          style={{width: '100%', height: 200}}
+          style={style.CardImage}
         />
         <View style={style.CardDetail}>
-          <MaterialIcons name="account-circle" size={40} color="#212121" />
+          <MaterialIcons name="account-circle" size={40} color={colors.text} />
           <View style={style.CardTexts}>
             <Text
               style={style.CardTitle}

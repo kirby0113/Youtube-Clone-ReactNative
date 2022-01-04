@@ -10,10 +10,15 @@ import {
 } from 'react-native';
 import {useNavigation, useTheme} from '@react-navigation/native';
 
-const MiniCard = props => {
-  const navigation = useNavigation();
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {NavigatorRoutes} from '../types/Navigation';
+
+import {MiniCardProps} from '../types/Cards';
+
+const MiniCard = (props: MiniCardProps) => {
+  const videoPlayerNavigation =
+    useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
-  const textcolor = colors.iconColor;
 
   const style = StyleSheet.create({
     MiniCard: {margin: 10, marginBottom: 0, flexDirection: 'row'},
@@ -22,20 +27,25 @@ const MiniCard = props => {
       margin: 5,
     },
     MiniCardTexts: {paddingLeft: 7},
-    ChannelTitle: {color: textcolor, fontSize: 17},
+    ChannelTitle: {color: colors.text, fontSize: 17},
     MiniCardTitle: {
       fontSize: 20,
       width: Dimensions.get('screen').width / 2,
-      color: textcolor,
+      color: colors.text,
+    },
+    MiniCardImage: {
+      width: '45%',
+      height: 100,
     },
   });
 
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate('videoplayer', {
+        videoPlayerNavigation.navigate('videoPlayer', {
           videoId: props.videoId,
           title: props.title,
+          channel: props.channelTitle,
         })
       }>
       <View style={style.MiniCard}>
@@ -43,7 +53,7 @@ const MiniCard = props => {
           source={{
             uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
           }}
-          style={{width: '45%', height: 100}}
+          style={style.MiniCardImage}
         />
         <View style={style.MiniCardTexts}>
           <Text

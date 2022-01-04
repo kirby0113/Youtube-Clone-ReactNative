@@ -1,13 +1,14 @@
 import React from 'react';
 
-import {View, Text, Dimensions} from 'react-native';
+import {View, Text, Dimensions, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
+import {NavigatorRoutes, VideoPlayerProps} from '../types/Navigation';
 
-const VideoPlayer = ({route}) => {
+const VideoPlayer = ({route}: VideoPlayerProps) => {
   const {videoId, title} = route.params;
   return (
-    <View style={{flex: 1, marginTop: 40}}>
-      <View style={{width: '100%', height: 200}}>
+    <View style={style.VideoPlayer}>
+      <View style={style.VideoPlayerScreen}>
         <WebView
           javaScriptEnabled={true}
           domStorageEnabled={true}
@@ -15,18 +16,33 @@ const VideoPlayer = ({route}) => {
         />
       </View>
       <Text
-        style={{
-          fontSize: 20,
-          width: Dimensions.get('screen').width - 50,
-          margin: 9,
-        }}
+        style={style.VideoPlayerTitle}
         numberOfLines={2}
         ellipsizeMode="tail">
         {title}
       </Text>
-      <View style={{borderBottomWidth: 1}}></View>
+      <View style={style.VideoPlayerBorder}>&nbsp</View>
     </View>
   );
 };
+
+const style = StyleSheet.create({
+  VideoPlayerTitle: {
+    fontSize: 20,
+    width: Dimensions.get('screen').width - 50,
+    margin: 9,
+  },
+  VideoPlayerScreen: {
+    width: '100%',
+    height: 200,
+  },
+  VideoPlayer: {
+    flex: 1,
+    marginTop: 40,
+  },
+  VideoPlayerBorder: {
+    borderBottomWidth: 1,
+  },
+});
 
 export default VideoPlayer;

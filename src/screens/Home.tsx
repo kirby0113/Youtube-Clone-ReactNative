@@ -2,14 +2,33 @@
 /* GET https://www.googleapis.com/youtube/v3/search */
 import React from 'react';
 
-import {StyleSheet, Text, View, ScrollView, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  FlatList,
+  FlatListProps,
+} from 'react-native';
 
 import Header from '../components/Header';
 import Card from '../components/Card';
+import {CardState} from '../types/State';
+import {CardProps} from '../types/Cards';
+
 import {useSelector} from 'react-redux';
 
-const Home = navigation => {
-  const cardData = useSelector(state => {
+const Home = () => {
+  type CardRenderItem = {
+    id: {
+      videoId: string;
+    };
+    snippet: {
+      title: string;
+      channelTitle: string;
+    };
+  };
+  const cardData = useSelector((state: CardState) => {
     return state.cardData;
   });
   return (

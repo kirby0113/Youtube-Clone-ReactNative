@@ -10,18 +10,22 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {CardState} from '../types/State';
 
 import {default as Ionicons} from 'react-native-vector-icons/Ionicons';
 
 import MiniCard from '../components/MiniCard';
 import {useSelector, useDispatch} from 'react-redux';
+import {SearchProps} from '../types/Navigation';
 
-const Search = props => {
+import {Colors} from '../constants/Colors';
+
+const Search = (props: SearchProps) => {
   const {colors} = useTheme();
-  const iconColor = colors.iconColor;
+  const iconColor = colors.text;
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-  const miniCardDatas = useSelector(state => {
+  const miniCardDatas = useSelector((state: CardState) => {
     return state.cardData;
   });
   const [loading, setLoading] = useState(false);
@@ -33,7 +37,7 @@ const Search = props => {
       .then(response => response.json())
       .then(json => {
         setLoading(false);
-        dispatch({type: 'add', payload: json.items});
+        dispatch({type: 'Add', payload: json.items});
       });
   };
 
@@ -44,16 +48,17 @@ const Search = props => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       evelation: 5,
-      shadowColor: '#000',
+      shadowColor: Colors.black,
       shadowOffset: {
         width: 0,
         height: 3,
       },
       shadowOpacity: 0.2,
       shadowRadius: 2,
-      backgroundColor: colors.headerColor,
+      backgroundColor: colors.background,
     },
-    SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
+    LoadingIndicator: {marginTop: 20},
+    SearchInput: {width: '70%', backgroundColor: Colors.whiteGrey},
   });
 
   return (
@@ -78,7 +83,11 @@ const Search = props => {
         />
       </View>
       {loading ? (
-        <ActivityIndicator style={{marginTop: 20}} size="large" color="red" />
+        <ActivityIndicator
+          style={style.LoadingIndicator}
+          size="large"
+          color={Colors.primary}
+        />
       ) : null}
       <FlatList
         data={miniCardDatas}
