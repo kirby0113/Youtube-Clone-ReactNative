@@ -75,7 +75,7 @@ const RootHome = () => {
           // You can return any component that you like here!
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: colors.text,
+        tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}>

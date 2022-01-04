@@ -11,6 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {NavigatorRoutes} from '../types/Navigation';
 
 import {ThemeState} from '../types/State';
+import {Colors} from '../constants/Colors';
 
 const Header = () => {
   const searchNavigation =
@@ -65,7 +66,7 @@ const Header = () => {
         <AntDesign
           name="youtube"
           size={32}
-          color="red"
+          color={Colors.primary}
           style={styled.HeaderLogoIcon}
         />
         <Text style={styled.HeaderLogoText}>YouTube</Text>

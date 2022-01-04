@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import Header from '../components/Header';
 import Card from '../components/Card';
+import {useTheme} from '@react-navigation/native';
 
 import {useSelector} from 'react-redux';
 
@@ -51,6 +52,7 @@ const VirtualizedView = ({children}: VirtualizedViewProps) => {
 };
 
 const Explore = () => {
+  const {colors} = useTheme();
   const cardData = useSelector((state: CardState) => {
     return state.cardData;
   });
@@ -61,7 +63,12 @@ const Explore = () => {
       flexWrap: 'wrap',
       justifyContent: 'space-around',
     },
-    CenterText: {margin: 8, fontSize: 22, borderBottomWidth: 1},
+    CenterText: {
+      margin: 8,
+      fontSize: 22,
+      borderBottomWidth: 1,
+      color: colors.text,
+    },
   });
   return (
     <View style={style.Explore}>

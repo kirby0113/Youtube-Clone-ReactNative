@@ -21,7 +21,7 @@ const VideoPlayer = ({route}: VideoPlayerProps) => {
         ellipsizeMode="tail">
         {title}
       </Text>
-      <View style={style.VideoPlayerBorder}></View>
+      <View style={style.VideoPlayerBorder}>&nbsp</View>
     </View>
   );
 };
