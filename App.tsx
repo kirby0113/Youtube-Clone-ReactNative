@@ -17,6 +17,7 @@ import Search from './src/screens/Search';
 import VideoPlayer from './src/screens/VideoPlayer';
 import Subscribe from './src/screens/Subscribe';
 import Explore from './src/screens/Explore';
+import Settings from './src/screens/Settings';
 import {reducer} from './src/reducers/reducer';
 import {themeReducer} from './src/reducers/themeReducer';
 
@@ -70,6 +71,8 @@ const RootHome = () => {
             iconName = 'explore';
           } else if (route.name === 'Subscribe') {
             iconName = 'subscriptions';
+          } else if (route.name === 'settings') {
+            iconName = 'settings';
           }
 
           // You can return any component that you like here!
@@ -82,6 +85,7 @@ const RootHome = () => {
       <Tabs.Screen name="home" component={Home} />
       <Tabs.Screen name="explore" component={Explore} />
       <Tabs.Screen name="Subscribe" component={Subscribe} />
+      <Tabs.Screen name="settings" component={Settings} />
     </Tabs.Navigator>
   );
 };
