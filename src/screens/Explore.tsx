@@ -8,11 +8,12 @@ import {useSelector} from 'react-redux';
 
 import {LittleCardProps} from '../types/Cards';
 import {CardState} from '../types/State';
+import {Colors} from '../constants/Colors';
 
 const LittleCard = ({name}: LittleCardProps) => {
   const style = StyleSheet.create({
     LittleCard: {
-      backgroundColor: 'red',
+      backgroundColor: Colors.primary,
       height: 50,
       width: 180,
       borderRadius: 4,
@@ -20,7 +21,7 @@ const LittleCard = ({name}: LittleCardProps) => {
     },
     LittleCardText: {
       textAlign: 'center',
-      color: 'white',
+      color: Colors.white,
       fontSize: 22,
       marginTop: 5,
     },

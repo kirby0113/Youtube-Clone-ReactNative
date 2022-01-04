@@ -19,7 +19,6 @@ const MiniCard = (props: MiniCardProps) => {
   const videoPlayerNavigation =
     useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'videoPlayer'>>();
   const {colors} = useTheme();
-  const textcolor = colors.text;
 
   const style = StyleSheet.create({
     MiniCard: {margin: 10, marginBottom: 0, flexDirection: 'row'},
@@ -28,11 +27,11 @@ const MiniCard = (props: MiniCardProps) => {
       margin: 5,
     },
     MiniCardTexts: {paddingLeft: 7},
-    ChannelTitle: {color: textcolor, fontSize: 17},
+    ChannelTitle: {color: colors.text, fontSize: 17},
     MiniCardTitle: {
       fontSize: 20,
       width: Dimensions.get('screen').width / 2,
-      color: textcolor,
+      color: colors.text,
     },
     MiniCardImage: {
       width: '45%',

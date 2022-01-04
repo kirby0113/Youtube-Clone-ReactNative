@@ -20,7 +20,6 @@ const Header = () => {
     return state.myDarkMode;
   });
   const {colors} = useTheme();
-  const mycolor = colors.text;
   const styled = StyleSheet.create({
     Header: {
       marginTop: 40,
@@ -56,7 +55,7 @@ const Header = () => {
       fontSize: 22,
       marginLeft: 7,
       fontWeight: 'bold',
-      color: mycolor,
+      color: colors.text,
     },
   });
 
@@ -72,17 +71,17 @@ const Header = () => {
         <Text style={styled.HeaderLogoText}>YouTube</Text>
       </View>
       <View style={styled.HeaderIcons}>
-        <Ionicons name="md-videocam" size={32} color={mycolor} />
+        <Ionicons name="md-videocam" size={32} color={colors.text} />
         <Ionicons
           name="md-search"
           size={32}
-          color={mycolor}
+          color={colors.text}
           onPress={() => searchNavigation.navigate('search')}
         />
         <MaterialIcons
           name="account-circle"
           size={32}
-          color={mycolor}
+          color={colors.text}
           onPress={() =>
             dispatch({type: 'change_theme', payload: !currentTheme})
           }

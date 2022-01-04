@@ -24,14 +24,15 @@ import {Provider, useSelector} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
 
 import {ThemeState} from './src/types/State';
+import {Colors} from './src/constants/Colors';
 
 const customDarkTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    background: '#404040',
-    primary: 'white',
-    text: 'white',
+    background: Colors.darkGrey,
+    primary: Colors.white,
+    text: Colors.white,
   },
 };
 
@@ -39,9 +40,9 @@ const customDefaultTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: 'white',
-    primary: 'red',
-    text: 'black',
+    background: Colors.white,
+    primary: Colors.primary,
+    text: Colors.black,
   },
 };
 

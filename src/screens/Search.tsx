@@ -18,6 +18,8 @@ import MiniCard from '../components/MiniCard';
 import {useSelector, useDispatch} from 'react-redux';
 import {SearchProps} from '../types/Navigation';
 
+import {Colors} from '../constants/Colors';
+
 const Search = (props: SearchProps) => {
   const {colors} = useTheme();
   const iconColor = colors.text;
@@ -46,7 +48,7 @@ const Search = (props: SearchProps) => {
       flexDirection: 'row',
       justifyContent: 'space-around',
       evelation: 5,
-      shadowColor: '#000',
+      shadowColor: Colors.black,
       shadowOffset: {
         width: 0,
         height: 3,
@@ -56,7 +58,7 @@ const Search = (props: SearchProps) => {
       backgroundColor: colors.background,
     },
     LoadingIndicator: {marginTop: 20},
-    SearchInput: {width: '70%', backgroundColor: '#e6e6e6'},
+    SearchInput: {width: '70%', backgroundColor: Colors.whiteGrey},
   });
 
   return (
@@ -84,7 +86,7 @@ const Search = (props: SearchProps) => {
         <ActivityIndicator
           style={style.LoadingIndicator}
           size="large"
-          color="red"
+          color={Colors.primary}
         />
       ) : null}
       <FlatList

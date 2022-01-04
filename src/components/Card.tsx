@@ -14,6 +14,7 @@ import {default as MaterialIcons} from 'react-native-vector-icons/MaterialIcons'
 
 import {CardProps} from '../types/Cards';
 import {NavigatorRoutes} from '../types/Navigation';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Card = (props: CardProps) => {
   const videoPlayerNavigation =
@@ -57,7 +58,11 @@ const Card = (props: CardProps) => {
           style={style.CardImage}
         />
         <View style={style.CardDetail}>
-          <MaterialIcons name="account-circle" size={40} color="#212121" />
+          <MaterialIcons
+            name="account-circle"
+            size={40}
+            color={Colors.darkGrey}
+          />
           <View style={style.CardTexts}>
             <Text
               style={style.CardTitle}
