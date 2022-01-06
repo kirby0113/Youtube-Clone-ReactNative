@@ -19,15 +19,6 @@ import {CardProps} from '../types/Cards';
 import {useSelector} from 'react-redux';
 
 const Home = () => {
-  type CardRenderItem = {
-    id: {
-      videoId: string;
-    };
-    snippet: {
-      title: string;
-      channelTitle: string;
-    };
-  };
   const cardData = useSelector((state: CardState) => {
     return state.cardData;
   });

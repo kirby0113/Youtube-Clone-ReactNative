@@ -1,5 +1,5 @@
 export type ThemeState = {
-  myDarkMode: boolean;
+  isDarkMode: boolean;
 };
 
 export type CardState = {
