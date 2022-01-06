@@ -7,7 +7,7 @@
 
 ### 使用ライブラリ等のリファレンス・参考URL
 
-#### react-native-vector-icons
+#### React Navigation
 - [React Navigation 公式サイト](https://reactnavigation.org/docs/getting-started/)
 
 #### react-native-vector-icons
@@ -17,6 +17,10 @@
 #### redux
 - [Redux 公式サイト](https://redux.js.org/introduction/getting-started)
 - [React Redux 公式サイト](https://react-redux.js.org/introduction/getting-started)
+
+#### redux-persist
+- [Storeの永続化にredux-persistを使う](https://qiita.com/yasuhiro-yamada/items/bd86d7c9f35ebb1c1e7c)
+- [How to solve: console.error: <br> "redux-persist failed to create sync storage. <br> falling back to "noop" storage](https://stackoverflow.com/questions/57781527/how-to-solve-console-error-redux-persist-failed-to-create-sync-storage-falli)
 
 ### React Native学習・プロジェクト作成
 - [Youtube clone using React Native（Youtube）](https://www.youtube.com/playlist?list=PLB97yPrFwo5jKXum0TaIywl2SfOWd0Y9i)
