@@ -1,3 +1,4 @@
+import {AnyAction} from 'redux';
 /* Card */
 
 import {CardProps} from '../types/Cards';
@@ -9,7 +10,7 @@ const add = (payload: CardProps) => ({
   payload,
 });
 
-export type CardReducerActions = ReturnType<typeof add>;
+export type CardReducerActions = ReturnType<typeof add> | AnyAction; //修正の余地あり（できればAnyAction使いたくない）
 
 /* Theme */
 
@@ -20,4 +21,4 @@ export const changeTheme = (payload: boolean) => ({
   payload,
 });
 
-export type ThemeReducerActions = ReturnType<typeof changeTheme>;
+export type ThemeReducerActions = ReturnType<typeof changeTheme> | AnyAction; //修正の余地あり
