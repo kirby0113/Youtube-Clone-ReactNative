@@ -18,7 +18,7 @@ const Header = () => {
     useNavigation<NativeStackNavigationProp<NavigatorRoutes, 'search'>>();
   const dispatch = useDispatch();
   const currentTheme = useSelector((state: ThemeState) => {
-    return state.myDarkMode;
+    return state.isDarkMode;
   });
   const {colors} = useTheme();
   const styled = StyleSheet.create({
